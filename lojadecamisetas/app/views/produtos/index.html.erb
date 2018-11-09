@@ -10,8 +10,7 @@
 				</TR>
 			</thead>
 			<tbody>
-				<% todos = Produto.all	%>
-				<% todos.each do |produto|	%>
+				<% @produtos.each do |produto|	%>
 				<tr>
 					<td><%= produto.nome %></td>
 					<td><%= produto.descricao %></td>
