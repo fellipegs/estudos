@@ -1,24 +1,28 @@
-<html>
-	<body>
-		<table>
-			<thead>
-				<TR>
-					<TH>Nome</TH>
-					<th>Descrição</th>
-					<th>Preço</th>
-					<th>Quantidade</th>
-				</TR>
-			</thead>
-			<tbody>
-				<% @produtos.each do |produto|	%>
-				<tr>
-					<td><%= produto.nome %></td>
-					<td><%= produto.descricao %></td>
-					<td><%= produto.preco %></td>
-					<td><%= produto.quantidade %></td>
-				</tr>
-				<% end %>
-			</tbody>
-		</table>
-	</body>
-</html>
+<div class= "container-FLUID">
+	<table class= "table table-bordered">
+		<thead>
+			<TR>
+				<TH>Nome</TH>
+				<th>Descrição</th>
+				<th>Preço</th>
+				<th>Quantidade</th>
+			</TR>
+		</thead>
+		<tbody>
+			<% @produtos.each do |produto|	%>
+			<tr>
+				<td><%= produto.nome %></td>
+				<td><%= produto.descricao %></td>
+				<td><%= produto.preco %></td>
+				<td><%= produto.quantidade %></td>
+				<td>
+					<%= button_to "Remover", produto, method: :delete, class: "btn btn-danger", data: {confirm: "Tem certeza que deseja remover #{produto.nome}? "} %> 
+				</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+<div class= "container">
+<%= link_to "Cadatro", new_produto_path,  method: :get, class: "btn btn-primary" %>
+</div>
