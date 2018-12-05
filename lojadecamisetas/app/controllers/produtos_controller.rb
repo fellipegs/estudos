@@ -10,11 +10,15 @@ class ProdutosController < ApplicationController
 		@produtos = Produto.where "nome like ?", "%#{@nome_a_buscar}%"
 	end
 
+	def new
+		@produto = Produto.new
+	end
 
 	def create
 		valores = params.require(:produto).permit :nome, :preco, :descricao, :quantidade
-		produto = Produto.create valores
-		if produto.save
+		@produto = Produto.new valores
+		if @produto.save
+			flash[:notice] = "Produto salvo com sucesso !!!"
 				redirect_to new_produto_path
 		else
 			render :new

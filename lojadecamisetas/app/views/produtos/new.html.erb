@@ -1,4 +1,12 @@
-<%= form_for Produto.new do |f|%>
+<% if flash[:notice] %>
+<div class= "alert alert-success" role= "alert"><%= flash[:notice]%></div>
+<% end %>
+<% @produto.errors.full_messages.each do |message| %>
+<div
+	class="alert alert-danger" role="alert"><%=message%>
+</div>
+<% end %>
+<%= form_for @produto do |f|%>
 <div class="form-group">
 	<%= f.label :nome %>
 	<%= f.text_field :nome, class: "form-control" %>
