@@ -1,35 +1,67 @@
-<% if flash[:notice] %>
-<div class= "alert alert-success" role= "alert"><%= flash[:notice]%></div>
-<% end %>
-<% @produto.errors.full_messages.each do |message| %>
-<div
+<div class="container">
+	<% if flash[:notice]%>
+	<div class= "alert alert-success" role= "alert"><%= flash[:notice]%>
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<% end %>
+
+	<% @produto.errors.full_messages.each do |message| %>
+	<div
 	class="alert alert-danger" role="alert"><%=message%>
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
 </div>
 <% end %>
+
 <%= form_for @produto do |f|%>
-<div class="form-group">
-	<%= f.label :nome %>
-	<%= f.text_field :nome, class: "form-control" %>
+<div class="form-row">
+	<div class="col">
+		<%= f.label :nome %>
+		<%= f.text_field :nome, class: "form-control" %>
+	</div>
+
+	<div class="col">
+
+	      <%= f.label :departamento%>
+	      <%= f.collection_select :departamento_id, @departamentos, :id, :nome, {:prompt => 'Choose your department'}, class: "form-control"  %>
+
+   </div>
+
 </div>
+
 <div class="form-group">
 	<%= f.label :descricao %>
 	<%= f.text_area :descricao, class: "form-control", rows: 4 %>
 </div>
+
 <div class="form-inline">
-	<div class="form-group">
-		<%= f.label :quantidade %>
+
+	<div class="form-group mb-2">
+		<%= f.label :quantidade , class: "px-2" %>
 		<%= f.number_field :quantidade, step: 1, class: "form-control" %>
 	</div>
-	
-	<div class="form-group">
-		<%= f.label :preco %>
+	<div class="form-group mx-sm-3 mb-2">
+		<%= f.label :preco , class: "px-2" %>
 		<%= f.number_field :preco, class: "form-control" %>
 	</div>
-	<%= f.submit "Criar o produto", class: "btn btn-primary"%>
+
+	<div class= "px-4"> 
+		<%= f.submit "Criar o produto", class: "btn btn-outline-success mb-2"%>		
+	</div>
+	
 </div>
-<ul class=" navbar-right">
-	<td>
-		<%= link_to "Retonar", root_url, class: "btn btn-info " %>
-	</td>
-</ul>
+
 <% end %>
+<div class="float-right">
+	<a href="<%=root_url%>" >
+		<button type="button" class="btn btn-outline-primary" >Retornar</button>
+	</a>
+</div>
+</div>
+
+
+
+

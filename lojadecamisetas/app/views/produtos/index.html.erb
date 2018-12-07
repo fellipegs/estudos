@@ -1,5 +1,5 @@
 <div class= "container-FLUID">
-	<table class= "table table-bordered">
+	<table class= "table table-hover table-sm">
 		<thead>
 			<TR>
 				<TH>Nome</TH>
@@ -16,7 +16,7 @@
 				<td><%= produto.preco %></td>
 				<td><%= produto.quantidade %></td>
 				<td>
-					<%= button_to "Remover", produto, method: :delete, class: "btn btn-danger", data: {confirm: "Tem certeza que deseja remover #{produto.nome}? "} %> 
+					<%= button_to "Remover", produto, method: :delete, class: "btn btn-outline-danger btn-sm", data: {confirm: "Tem certeza que deseja remover #{produto.nome}? "} %> 
 				</td>
 			</tr>
 			<% end %>
@@ -24,5 +24,6 @@
 	</table>
 </div>
 <div class= "container">
-<%= link_to "Cadatro", new_produto_path,  method: :get, class: "btn btn-primary" %>
+<%= link_to "Cadastro", new_produto_path,  method: :get, class: "btn btn-outline-primary" %>
+<%= link_to "Departamentos", departamentos_path,  method: :get, class: "btn btn-outline-primary" %>
 </div>

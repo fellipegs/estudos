@@ -1,4 +1,6 @@
 class Produto < ApplicationRecord
-	 validates :quantidade, presence: true
-	 validates :nome, length: {minimum: 5 }, presence: true
+
+	belongs_to :departamento
+	validates :quantidade, presence: true
+	validates :nome, length: {minimum: 5 }, presence: true
 end
